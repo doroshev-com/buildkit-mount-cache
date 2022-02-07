@@ -1,0 +1,6 @@
+FROM python:3.10
+
+RUN mkdir /pip-packages
+
+RUN --mount=type=cache,target=/root/.cache \
+    pip install --target=/pip-packages uwsgi requests

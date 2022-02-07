@@ -1,0 +1,12 @@
+FROM python:3.10
+
+RUN mkdir /pip-packages \
+    && touch /pip-packages/foo \
+    && ls -1 /pip-packages
+
+RUN --mount=type=cache,target=/pip-packages \
+    ls -1 /pip-packages \
+    && pip install --target=/pip-packages uwsgi \
+    && ls -1 /pip-packages
+
+RUN ls -1 /pip-packages
